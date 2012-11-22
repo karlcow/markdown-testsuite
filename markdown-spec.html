@@ -38,30 +38,98 @@
 
     <section id='sotd'>
       <p>
-        This document has not been approved by any group yet. This is just a boilerplate for showing to the <a href="http://www.w3.org/community/markdown/">Markdown Community Group</a> what could be the HTML skeleton.
+        This document has not been approved by any group yet. The intent is to produce a strawmann document which can be used by the <a href="http://www.w3.org/community/markdown/">Markdown Community Group</a> for defining what should be in a Markdown Specification.
       </p>
     </section>
 
     <section class='informative'>
       <h2>Introduction</h2>
       <p>
-        <dfn>Markdown</dfn> is a text syntax created by John Gruber. etc.
+        <dfn>Markdown</dfn> is a text syntax created by John Gruber. etc. The content of the markup defined in this document is based on the initial Markdown Syntax as defined by John Gruber. The document might address syntax extension later on.
       </p>
     </section>
 
-    <section>
-      <h2>Syntax</h2>
+    <section id='conformance'>
+      <h2>Conformance Section</h2>
+      <ul>
+        <li>author: (including authoring tools)</li>
+        <li>Markdown parser: </li>
+        <li>HTML producer: </li>
+      </ul>
+      <p class="issue">Define what/who implements the specification.</p>
     </section>
 
-    <section>
-      <h2>Extension</h2>
-      <p>More blah blah</p>   </section>
+<section>
+<h2>Syntax</h2>
 
-    <section class='appendix'>
-      <h2>Acknowledgements</h2>
-      <p>
-        Many thanks to <a href="http://daringfireball.net/">John Gruber</a> for creating the initial version of <a href="http://daringfireball.net/projects/markdown/">Markdown Syntax</a>, Jeff Atwood for having the idea of stabilizing the syntax and Dave Pawson for proposing the W3C Markdown Community Group.
-      </p>
-    </section>
-  </body>
+<h3>Standalone Paragraph</h3>
+
+<p>A <dfn>standalone paragraph</dfn> is a unit of text on one or more contiguous lines. Authors can use 0 to 3 leading spaces and 1 trailing space.</p>
+
+<h4 class="informative">Examples</h4>
+
+<pre class="example">This is a paragraph on a single line.
+
+This is another paragraph
+but on multiple lines.
+
+ This is another way
+ to create paragraphs
+ with leading spaces.</pre>
+
+<h4>Processing</h4>
+
+<p>A paragraph starts with 0 to 3 spaces (U+0020) followed by any characters, except the following characters <code>*</code> (U+002A), <code>-</code> (U+002D), <code>+</code> (U+002B), <code>></code>(U+003E).</p>
+
+<p>The paragraphs ends with a carriage return CR (U+000D) followed by:</p>
+
+<ul>
+  <li>any spaces or tabs and another carriage return CR (U+000D).</li>
+  <li>or End Of File</li>
+</ul>
+
+<p class="issue">Should a parser remove the leading characters spaces.</p>
+<p class="issue">To test tabs at the ends of a carriage return. See paragraph-trailing-tab.md test.</p>
+
+<h4>HTML output</h4>
+
+<p>An HTML producer MUST output a <code>P</code> element start tag followed by the content and MUST end with the <code>P</code> element end tag.</p>
+
+<p class="issue">Addressing the trailing/leading space characters in the processing or in the HTML output. Maybe better in the processing section to be able to produce in more than one format.</p>
+
+<h3>Line break</h3>
+
+<p>A <dfn>line break</dfn> is a way for authors to break a paragraph in the middle. Authors can use two trailing spaces and a return at the end of a line to insert a line break in a paragraph.</p>
+
+<h4 class="informative">Examples</h4>
+<pre class="example">This is a paragraph␠␠
+with an effective line break.</pre>
+
+<h4>Processing</h4>
+
+<p>A line break is created when there are two trailing spaces characters (U+0020) followed by a carriage return CR (U+000D).</p>
+
+<p class="issue">To test what is happening with 3 or more trailing spaces.</p>
+<p class="issue">To test what is happening when this is the end of the paragraph. Should it be removed or kept.</p>
+
+<h4>HTML output</h4>
+
+<p>An HTML producer MUST output a <code>BR</code> element.</p>
+
+</section>
+
+<section class='appendix'>
+<h2>Acknowledgements</h2>
+
+<p>The editor would like to thank the following persons for contributing and helping in creating this document</p>
+
+<ul>
+  <li>Many thanks to <a href="http://daringfireball.net/">John Gruber</a> for creating the initial version of <a href="http://daringfireball.net/projects/markdown/">Markdown Syntax</a>.</li>
+  <li>Jeff Atwood for calling out on stabilizing the Markdown syntax. @@link to blog post@@</li>
+  <li><a href="http://www.dpawson.co.uk">Dave Pawson</a> for proposing the W3C Markdown Community Group.</li>
+  <li><a href="http://johnmacfarlane.net/babelmark2/">Babelmark2</a> by <a href="http://johnmacfarlane.net/">John MacFarlane</a> has been essential to stay in sync with the reality of current implementations.</li>
+</ul>
+</section>
+
+</body>
 </html>
