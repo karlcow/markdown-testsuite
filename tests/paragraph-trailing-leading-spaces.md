@@ -1,1 +1,1 @@
- Test paragraph 
+ This is a paragraph with a trailing and leading space. 
