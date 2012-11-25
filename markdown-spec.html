@@ -137,6 +137,57 @@ with an effective line break.</pre>
 
 <p>An HTML producer MUST output a <code>BR</code> element.</p>
 
+<h3>Headings</h3>
+
+<p>A <dfn>heading</dfn> is a string of text for marking up headings with 1 to 6 levels. The heading must be on one and only one line. It must not have any leading space characters. There are 3 ways of marking up headings.</p>
+
+<dl>
+<dt>Leading Hash sign</dt>
+<dd>The author must must put hash sign (<code>#</code>) at the beginning of the line followed by 0 or 1 space and the heading string. 1 hash sign for a level 1 heading to 6 hash signs for a level 6 heading.</dd>
+<dt>Nesting Hash sign</dt>
+<dd>In addition to the previous rules for leading hash sign, the author must close with 0 to 1 space and the same number of hash signs <code>#</code>.</dd>
+<dt>Underlines (<strong>level 1 and 2 only</strong>)</dt>
+<dd>For level 1 heading, the author must put at the next line after the heading string a series of equal signs (<code>=</code>) of the same length than the heading.</dd>
+<dd>For level 2 heading, the author must put at the next line after the heading string a series of dash signs (<code>-</code>) of the same length than the heading.</dd>
+</dl>
+
+<h4 class="informative">Examples</h4>
+
+<pre class="example">
+# Heading level 1
+## Heading level 2
+### Heading level 3
+#### Heading level 4
+##### Heading level 5
+###### Heading level 6
+
+# Heading level 1 #
+## Heading level 2 ##
+### Heading level 3 ###
+#### Heading level 4 ####
+##### Heading level 5 #####
+###### Heading level 6 ######
+
+Heading level 1
+===============
+
+Heading level 2
+---------------
+</pre>
+
+<h4>Processing</h4>
+
+<p>.</p>
+
+<p class="issue">trailing hash signs are not significant. This has to be explained clearly in the processing part.</p>
+<p class="issue">leading spaces are forbidden. To check.</p>
+<p class="issue">Is the length of the undeline string (=, -) significant. To check.</p>
+
+<h4>HTML output</h4>
+
+<p>What should be the output</p>
+
+
 </section>
 
 <section>
