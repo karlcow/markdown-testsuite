@@ -188,6 +188,37 @@ Heading level 2
 
 <p>What should be the output</p>
 
+<h3>Reserved characters</h3>
+
+<p><dfn>Reserved characters</dfn> are used for marking up a markdown prose in some circumstances. It includes backtick <code>`</code>, asterisk <code>*</code>,
+ underscore <code>_</code>, curly braces <code>
+{}</code>code>, square brackets<code>[]</code>, parentheses <code>()</code>, hash mark <code>#</code>,  plus sign <code>+</code>, minus sign (hyphen) <code>-</code>, dot <code>.</code>, exclamation mark <code>!</code>. Their behavior is dependent of the position in the text. Authors can escape these characters with a backslash character (<code>\</code>)</p>
+
+<h4 class="informative">Examples</h4>
+
+<pre class="example">\\   backslash
+\`   backtick
+\*   asterisk
+\_   underscore
+\{\}  curly braces
+\[\]  square brackets
+\(\)  parentheses
+\#   hash mark
+\+   plus sign
+\-   minus sign (hyphen)
+\.   dot
+\!   exclamation mark</pre>
+
+<h4>Processing</h4>
+
+<p>How a parser should process the feature.@describe the step and the unicode character.</p>
+
+<p class="issue">Describe precisely when the characters is not escaped.</p>
+<p class="issue">Tests Needed for different circumstances.</p>
+
+<h4>HTML output</h4>
+
+<p>The producer tool must output the reserved characters as it is defined.</p>
 
 </section>
 
