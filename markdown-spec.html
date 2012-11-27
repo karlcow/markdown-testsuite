@@ -82,6 +82,45 @@
 
 -->
 
+<h3>End Of Line (EOL) sequence</h3>
+
+<p>An <dfn>EOL sequence</dfn>consists of all characters and character sequences which can indicate the end of a line of input in a Markdown file.</p>
+
+<h4>Processing</h4>
+
+<p>An EOL sequence is defined as any of the following character sequences:</p>
+
+<ul>
+  <li>LF: Line Feed, U+000A
+  <li>CR: Carriage Return, U+000D
+  <li>CR+LF: CR (U+000D) followed by LF (U+000A)
+</ul>
+
+<h5 class="minisuite">Test Cases</h5>
+
+<ul class="tests">
+<li><a href="https://github.com/karlcow/markdown-testsuite/blob/master/tests/EOL-LF.md">Lines end with LF</a></li>
+<li><a href="https://github.com/karlcow/markdown-testsuite/blob/master/tests/EOL-CR.md">Lines end with CR</a></li>
+<li><a href="https://github.com/karlcow/markdown-testsuite/blob/master/tests/EOL-CR+LF.md">Lines end with CR+LF</a></li>
+</ul>
+
+<p class="issue">Should all Unicode characters considered to mean the end of the line be recognized? (see <a href="http://en.wikipedia.org/wiki/Newline">Wikipedia Newline article</a>)</p>
+<p class="issue">As far as I can tell, embedding different EOL characters in a single text document is not doable by me.  I've created separate files to test, but that leaves us in the cold re: example text for this definition.  I've included tests for each EOL (to make sure they are detected properly).</p>
+
+<h4>HTML output</h4>
+
+<p>The output will be dependent on the block-level element being processed.  See (list of block-elements and cross-referenctial anchor tags goes here) for more information.</p>
+
+<p>For purposes of illustration, all the tests above should result in the following (identical) output.</p>
+
+<pre>
+<p>These lines all end with end of line (EOL) sequences.</p>
+
+<p>Seriously, they really do.</p>
+
+<p>If you don't believe me: HEX EDIT!</p>
+</pre>
+
 <h3>Standalone Paragraph</h3>
 
 <p>A <dfn>standalone paragraph</dfn> is a unit of text on one or more contiguous lines. Authors can use 0 to 3 leading spaces and 1 trailing space.</p>
@@ -101,7 +140,7 @@ but on multiple lines.
 
 <p>A paragraph starts with 0 to 3 spaces (U+0020) followed by any characters, except the following characters <code>*</code> (U+002A), <code>-</code> (U+002D), <code>+</code> (U+002B), <code>></code>(U+003E).</p>
 
-<p>The paragraphs ends with a carriage return CR (U+000D) followed by:</p>
+<p>A paragraph ends with an EOL followed by:</p>
 
 <ul>
   <li>any spaces or tabs and another carriage return CR (U+000D).</li>
