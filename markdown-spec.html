@@ -84,7 +84,7 @@
 
 <h3>End Of Line (EOL) sequence</h3>
 
-<p>An <dfn>EOL sequence</dfn>consists of all characters and character sequences which can indicate the end of a line of input in a Markdown file.</p>
+<p>An <dfn>EOL sequence</dfn> consists of all characters and character sequences which can indicate the end of a line of input in a Markdown file.</p>
 
 <h4>Processing</h4>
 
@@ -140,10 +140,10 @@ but on multiple lines.
 
 <p>A paragraph starts with 0 to 3 spaces (U+0020) followed by any characters, except the following characters <code>*</code> (U+002A), <code>-</code> (U+002D), <code>+</code> (U+002B), <code>></code>(U+003E).</p>
 
-<p>A paragraph ends with an EOL followed by:</p>
+<p>A paragraph ends with an EOL sequence followed by:</p>
 
 <ul>
-  <li>any spaces or tabs and another carriage return CR (U+000D).</li>
+  <li>any spaces or tabs and another EOL sequence.</li>
   <li>or End Of File</li>
 </ul>
 
@@ -180,7 +180,7 @@ with an effective line break.</pre>
 
 <h4>Processing</h4>
 
-<p>A line break is created when there are two trailing spaces characters (U+0020) followed by a carriage return CR (U+000D).</p>
+<p>A line break is created when there are two trailing spaces characters (U+0020) followed by an EOL sequence.</p>
 
 <p class="issue">To test what is happening with 3 or more trailing spaces.</p>
 <p class="issue">To test what is happening when this is the end of the paragraph. Should it be removed or kept.</p>
