@@ -1,4 +1,4 @@
-# markdown-testsuite
+# Markdown Test Suite
 
 Inspired by questions on [W3C Markdown Community Group](http://www.w3.org/community/markdown).
 
