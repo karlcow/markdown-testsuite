@@ -9,7 +9,7 @@ Pull Requests are welcome.
 Markdown extension tests are accepted. Use the following rules:
 
 - place all extension tests under the `test/extensions/ENGINE` directory with filename equal to the feature name
-- for each `ENGINE` and add a `README.md` under the engine directory with a link to its specification
+- for each `ENGINE` and add a `README.markdown` under the engine directory with a link to its specification
 
 where `ENGINE` is either of:
 
@@ -43,11 +43,11 @@ For example, what GFM `@user` user tags render to also depends on the state of G
 
 GFM and the "fenced code block" use the following file structure:
 
-    tests/extensions/gfm/README.md
+    tests/extensions/gfm/README.markdown
     tests/extensions/gfm/fenced-code-block.md
     tests/extensions/gfm/fenced-code-block.out
 
-where `README.md` contains:
+where `README.markdown` contains:
 
     https://help.github.com/articles/github-flavored-markdown
 
