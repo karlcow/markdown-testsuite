@@ -25,7 +25,7 @@ Don't be afraid to add details to your issue. The more context you give, the bet
 
 ## Editing Markdown Specification
 
-There is much needed work on the [Markdown Specification](https://github.com/karlcow/markdown-testsuite/blob/master/markdown-spec.html) (source). It doesn't require strong competences in coding. Be systematic in the markup and follow the way it is already organized. Each time you added a new atomic section, create a commit for this specific part.
+There is much needed work on the [Markdown Specification](http://htmlpreview.github.io/?https://github.com/karlcow/markdown-testsuite/blob/master/markdown-spec.html). It doesn't require strong competences in coding. Be systematic in the markup and follow the way it is already organized. Each time you added a new atomic section, create a commit for this specific part.
 
 ## Test Suite Guidelines
 
