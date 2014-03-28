@@ -115,6 +115,16 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output(['kramdown'], input)
 
+    class multimarkdown(object):
+
+        @classmethod
+        def available(cls):
+            return command_present('multimarkdown')
+
+        @classmethod
+        def get_output(cls, input):
+            return stdin_stdout_get_output(['multimarkdown'], input)
+
     class pandoc(object):
 
         @classmethod
