@@ -4,6 +4,23 @@ Inspired by questions on [W3C Markdown Community Group](http://www.w3.org/commun
 
 Pull Requests are welcome.
 
+## Test Scripts
+
+Markdown Test Suite already includes tests for important markdown engines listed under:
+
+    ls tests/extensions
+
+Install script dependencies with:
+
+    sudo pip install -r requirements.txt
+
+The scripts are:
+
+- `run-tests.py`
+- `cat-all.py`
+
+Read the file level docstring of each script to see what it does.
+
 ## Markdown Extensions
 
 Markdown extension tests are accepted. Use the following rules:
@@ -63,3 +80,9 @@ If the input is the same, and outputs are DOM different, but represent the same 
     tests/extensions/gfm/fenced-code-block.out
     tests/extensions/fenced-code-block.md
     tests/extensions/fenced-code-block.out
+
+### New Extensions
+
+Tests are modular, and if you want to test a new engine for your project, that should be easy to do.
+
+If you feel that the new engine is reasonably popular, please send a pull request adding it.
