@@ -20,3 +20,9 @@ The scripts are:
 - `cat-all.py`
 
 Read the file level docstring of each script to see what it does.
+
+To configure the scripts do:
+
+	cp config_local.py.example config_local.py
+
+and edit `config_local.py`. It is already gitignored.
