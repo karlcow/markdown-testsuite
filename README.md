@@ -2,7 +2,7 @@
 
 Inspired by questions on [W3C Markdown Community Group](http://www.w3.org/community/markdown).
 
-Pull Requests are welcome.
+Pull Requests are welcome. See the [CONTRIBUTING Guidelines](https://github.com/karlcow/markdown-testsuite/blob/master/CONTRIBUTING.md)
 
 ## Test Scripts
 
