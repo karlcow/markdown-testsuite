@@ -105,45 +105,21 @@ class Engines(object):
                 return 'CONNEXION ERROR: ' + str(e)
             return response.read().decode(md_testsuite.encoding)
 
-    class kramdown(object):
-
+    class CommandEngine(object):
+    	"""
+    	Base class for engines which use a command in PATH.
+    	"""
         @classmethod
         def available(cls):
-            return command_present('kramdown')
-
+            return command_present(cls.__name__)
         @classmethod
         def get_output(cls, input):
-            return stdin_stdout_get_output(['kramdown'], input)
+            return stdin_stdout_get_output([cls.__name__], input)
 
-    class multimarkdown(object):
-
-        @classmethod
-        def available(cls):
-            return command_present('multimarkdown')
-
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output(['multimarkdown'], input)
-
-    class pandoc(object):
-
-        @classmethod
-        def available(cls):
-            return command_present('pandoc')
-
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output(['pandoc'], input)
-
-    class redcarpet(object):
-
-        @classmethod
-        def available(cls):
-            return command_present('redcarpet')
-
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output(['redcarpet'], input)
+    class kramdown(CommandEngine): pass
+    class multimarkdown(CommandEngine): pass
+    class pandoc(CommandEngine): pass
+    class redcarpet(CommandEngine): pass
 
 def on_ok_single(path, input, output, expected_output):
     sys.stdout.write('.')
