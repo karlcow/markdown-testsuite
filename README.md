@@ -19,6 +19,13 @@ The scripts are:
 
 Read the file level docstring of each script to see what it does.
 
+To configure the scripts do:
+
+	cp config_local.py.example config_local.py
+
+and edit `config_local.py`. It is already gitignored.
+
+
 Sample output from `run-tests.py`:
 
 	gfm           |FF     F     F   FFFF  F    F                        FFFF   FF               FF   F       F           | 262.88s  102   20  19%
@@ -36,3 +43,4 @@ Sample output from `run-tests.py`:
 	redcarpet     |  |   0.42s    2    0   0%
 
 Where `F` indicates a failing test.
+
