@@ -232,12 +232,15 @@ if len(sys.argv) == 1:
     if newline:
         print
 
-    l = len(max(available_engine_names, key=len))
-    for engine_name in available_engine_names:
-        test_summarize(engine_name, md_testsuite.io_iterator(), l)
-    print "\nExtensions:\n"
-    for engine_name in available_engine_names:
-        test_summarize(engine_name, md_testsuite.io_iterator_engine(engine_name), l)
+	if available_engine_names:
+		l = len(max(available_engine_names, key=len))
+		for engine_name in available_engine_names:
+			test_summarize(engine_name, md_testsuite.io_iterator(), l)
+		print "\nExtensions:\n"
+		for engine_name in available_engine_names:
+			test_summarize(engine_name, md_testsuite.io_iterator_engine(engine_name), l)
+	else:
+		print "No engines are enabled. Install or enable some from config_local.py"
 else:
     engine_name = sys.argv[1]
     engine = getattr(Engines, engine_name)
