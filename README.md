@@ -12,12 +12,10 @@ Install script dependencies with:
 
     sudo pip install -r requirements.txt
 
-The scripts are:
+To see what the scripts do run:
 
-- `run-tests.py`
-- `cat-all.py`
-
-Read the file level docstring of each script to see what it does.
+    ./cat-all.py -h
+    ./run-tests.py -h
 
 To configure the scripts do:
 
@@ -25,22 +23,20 @@ To configure the scripts do:
 
 and edit `config_local.py`. It is already gitignored.
 
-
 Sample output from `run-tests.py`:
 
-	gfm           |FF     F     F   FFFF  F    F                        FFFF   FF               FF   F       F           | 262.88s  102   20  19%
-	kramdown      |      FFF     FF       FF       FF FFFFFFFFFFFFF                       F                              |  30.69s  102   23  22%
-	multimarkdown |      FFF    FF   F            FFF FFFFFFFFFFFFF     FFFF         F                                   |   0.58s  102   27  26%
-	pandoc        |FF           F F FFFF  FFFFF    FF FFFFFFFFFFFFF     FFFF     FF            FFF FFF                  F|   1.11s  102   41  40%
-	redcarpet     |                                                                                                      |  21.49s  102    0   0%
+	gfm           |FF.....F.....F...FFFF..F....F........................FFFF...FF...............FF...F.......F...........| 262.88s  102   20  19%
+	kramdown      |......FFF.....FF.......FF.......FF.FFFFFFFFFFFFF.......................F..............................|  30.69s  102   23  22%
+	multimarkdown |......FFF....FF...F............FFF.FFFFFFFFFFFFF.....FFFF.........F...................................|   0.58s  102   27  26%
+	pandoc        |FF...........F.F.FFFF..FFFFF....FF.FFFFFFFFFFFFF.....FFFF.....FF............FFF.FFF..................F|   1.11s  102   41  40%
+	redcarpet     |......................................................................................................|  21.49s  102    0   0%
 
 	Extensions:
 
-	gfm           |F |   2.37s    2    1  50%
-	kramdown      |  |   0.62s    2    0   0%
-	multimarkdown |F |   0.01s    2    1  50%
-	pandoc        |F |   0.02s    2    1  50%
-	redcarpet     |  |   0.42s    2    0   0%
+	gfm           |F.|   2.37s    2    1  50%
+	kramdown      |..|   0.62s    2    0   0%
+	multimarkdown |F.|   0.01s    2    1  50%
+	pandoc        |F.|   0.02s    2    1  50%
+	redcarpet     |..|   0.42s    2    0   0%
 
 Where `F` indicates a failing test.
-
