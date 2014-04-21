@@ -244,6 +244,13 @@ parser.add_argument(
 Else, run all engines which are both enabled and available, and print only summarized output."""
 )
 parser.add_argument(
+    "-l",
+    "--list-engines",
+    action="store_true",
+    default=False,
+    help="List engines. If given, overrides all other options and nothing else is done."
+)
+parser.add_argument(
     "-n",
     "--number",
     default=None,
@@ -263,32 +270,43 @@ If given, output expected / actual IO even if `engine` was not given.
 )
 args = parser.parse_args()
 
-if args.engine:
-    engine_name = args.engine
-    test_result = run_tests(md_testsuite.io_iterator(), engine_name, len(engine_name), args)
-    print "\nExtensions:\n"
-    test_result_extension = run_tests(md_testsuite.io_iterator_engine(engine_name),
-            engine_name, len(engine_name), args)
-    print format_error_ios_and_summaries(test_result, test_result_extension)
+if args.list_engines:
+    print "All:                   {}\n" \
+          "Enabled:               {}\n" \
+          "Available:             {}\n" \
+          "Enabled and Available: {}".format(
+        ", ".join(all_engine_names),
+        ", ".join(enabled_engine_names),
+        ", ".join(filter(lambda e: getattr(Engines, e).available(), all_engine_names)),
+        ", ".join(enabled_and_available_engine_names),
+    )
 else:
-    if disabled_by_conf:
-        print "Engines disabled by configuration: {}".format(", ".join(disabled_by_conf))
-        newline = True
-    if enabled_and_not_available_engine_names:
-        print "Enabled engines not available:     {}".format(", ".join(enabled_and_not_available_engine_names))
-        newline = True
-    if newline:
-        print
-    if enabled_and_available_engine_names:
-        l = len(max(enabled_and_available_engine_names, key=len))
-        test_result = TestResult()
-        for engine_name in enabled_and_available_engine_names:
-            test_result += run_tests(md_testsuite.io_iterator(), engine_name, l, args)
+    if args.engine:
+        engine_name = args.engine
+        test_result = run_tests(md_testsuite.io_iterator(), engine_name, len(engine_name), args)
         print "\nExtensions:\n"
-        test_result_extension = TestResult()
-        for engine_name in enabled_and_available_engine_names:
-            test_result_extension += run_tests(md_testsuite.io_iterator_engine(engine_name), engine_name, l, args)
-        if args.filter_string:
-            print format_error_ios_and_summaries(test_result, test_result_extension)
+        test_result_extension = run_tests(md_testsuite.io_iterator_engine(engine_name),
+                engine_name, len(engine_name), args)
+        print format_error_ios_and_summaries(test_result, test_result_extension)
     else:
-		print "No engines are enabled. Install or enable some."
+        if disabled_by_conf:
+            print "Engines disabled by configuration: {}".format(", ".join(disabled_by_conf))
+            newline = True
+        if enabled_and_not_available_engine_names:
+            print "Enabled engines not available:     {}".format(", ".join(enabled_and_not_available_engine_names))
+            newline = True
+        if newline:
+            print
+        if enabled_and_available_engine_names:
+            l = len(max(enabled_and_available_engine_names, key=len))
+            test_result = TestResult()
+            for engine_name in enabled_and_available_engine_names:
+                test_result += run_tests(md_testsuite.io_iterator(), engine_name, l, args)
+            print "\nExtensions:\n"
+            test_result_extension = TestResult()
+            for engine_name in enabled_and_available_engine_names:
+                test_result_extension += run_tests(md_testsuite.io_iterator_engine(engine_name), engine_name, l, args)
+            if args.filter_string:
+                print format_error_ios_and_summaries(test_result, test_result_extension)
+        else:
+            print "No engines are enabled. Install or enable some."
