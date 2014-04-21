@@ -145,31 +145,32 @@ def run_tests(io_iterator, engine_name, l, args):
     io_iterator = itertools.ifilter(lambda io: args.filter_string in io[0], io_iterator)
     for path, input, expected_output in io_iterator:
         total += 1
-        output = engine.get_output(input)
-        normalized_output = dom_normalize(output)
-        normalized_expected_output = dom_normalize(expected_output)
-        if normalized_output == normalized_expected_output:
-            summary_one_line = stdout_and_string(summary_one_line, ".")
-        else:
-            errors += 1
-            summary_one_line = stdout_and_string(summary_one_line, "F")
-            error_io_string += (
-                '# ' + path + ' | #' + unicode(total) + ' | ' + engine_name + '\n'
-                + "=" * 70 + '\n'
-                + '\n'
-                + input + '\n'
-                + '\n'
-                + ("-" * 35) + ' output:' + '\n'
-                + '\n'
-                + normalized_output + '\n'
-                + '\n'
-                + ("-" * 35) + ' expected:' + '\n'
-                + '\n'
-                + normalized_expected_output + '\n'
-                + '\n'
-                + "=" * 70 + '\n'
-                + '\n'
-            )
+        if not args.number or total == args.number:
+            output = engine.get_output(input)
+            normalized_output = dom_normalize(output)
+            normalized_expected_output = dom_normalize(expected_output)
+            if normalized_output == normalized_expected_output:
+                summary_one_line = stdout_and_string(summary_one_line, ".")
+            else:
+                errors += 1
+                summary_one_line = stdout_and_string(summary_one_line, "F")
+                error_io_string += (
+                    '# ' + path + ' | #' + unicode(total) + ' | ' + engine_name + '\n'
+                    + "=" * 70 + '\n'
+                    + '\n'
+                    + input + '\n'
+                    + '\n'
+                    + ("-" * 35) + ' output:' + '\n'
+                    + '\n'
+                    + normalized_output + '\n'
+                    + '\n'
+                    + ("-" * 35) + ' expected:' + '\n'
+                    + '\n'
+                    + normalized_expected_output + '\n'
+                    + '\n'
+                    + "=" * 70 + '\n'
+                    + '\n'
+                )
     elapsed_time = time.time() - start_time
     if total == 0:
         percent = 0
@@ -241,6 +242,15 @@ parser.add_argument(
     nargs='?',
     help="""If given, only run tests for this engine even is disabled, and print actual / expected IO for each failing test.
 Else, run all engines which are both enabled and available, and print only summarized output."""
+)
+parser.add_argument(
+    "-n",
+    "--number",
+    default=None,
+    type=int,
+    help="""Only run the test with given number.
+The number of a test if affected by filtering options such as `-s`.
+"""
 )
 parser.add_argument(
     "-s",
