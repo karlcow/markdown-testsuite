@@ -8,10 +8,6 @@ Pull Requests are welcome. See the [CONTRIBUTING Guidelines](https://github.com/
 
 Markdown Test Suite already includes tests for many important markdown engines.
 
-Install script dependencies with:
-
-    sudo pip install -r requirements.txt
-
 To see what the scripts do run:
 
     ./cat-all.py -h
