@@ -117,6 +117,7 @@ class Engines(object):
             return stdin_stdout_get_output([cls.__name__], input)
 
     class kramdown(CommandEngine): pass
+    class md2html(CommandEngine): pass
     class multimarkdown(CommandEngine): pass
     class pandoc(CommandEngine): pass
     class redcarpet(CommandEngine): pass
