@@ -190,10 +190,6 @@ def format_error_ios_and_summaries(test_result, test_result_extension):
     )
 
 all_engine_names = md_testsuite.get_engine_ids()
-disabled_by_conf = config['run_all_disable']
-enabled_engine_names = filter(lambda e: not e in disabled_by_conf, all_engine_names)
-enabled_and_available_engine_names = filter(lambda e: getattr(Engines, e).available(), enabled_engine_names)
-enabled_and_not_available_engine_names = filter(lambda x: not x in enabled_and_available_engine_names, enabled_engine_names)
 
 parser = argparse.ArgumentParser(
     description="Run markdown tests.",
@@ -229,7 +225,7 @@ Run all tests for the given engine:
 
     {f} multimarkdown
 
-Run only tests which contain a literal string:
+Run only tests which contain a literal string in the name:
 
     {f} -s string
     {f} -s string multimarkdown
@@ -237,11 +233,11 @@ Run only tests which contain a literal string:
     formatter_class=argparse.RawTextHelpFormatter,                 # Keep newlines.
 )
 parser.add_argument(
-    'engine',
-    choices=all_engine_names,
-    nargs='?',
-    help="""If given, only run tests for this engine even is disabled, and print actual / expected IO for each failing test.
-Else, run all engines which are both enabled and available, and print only summarized output."""
+    "-a",
+    "--enable-all",
+    action="store_true",
+    default=False,
+    help="Enable all engines for a single command."
 )
 parser.add_argument(
     "-l",
@@ -256,7 +252,7 @@ parser.add_argument(
     default=None,
     type=int,
     help="""Only run the test with given number.
-The number of a test if affected by filtering options such as `-s`.
+The number of a test is affected by filtering options such as `-s`.
 """
 )
 parser.add_argument(
@@ -264,11 +260,25 @@ parser.add_argument(
     "--filter-string",
     default="",
     help="""Only run tests whose names contain the given literal string.
-
 If given, output expected / actual IO even if `engine` was not given.
 """
 )
+parser.add_argument(
+    'engine',
+    choices=all_engine_names,
+    nargs='?',
+    help="""If given, only run tests for this engine even is disabled, and print actual / expected IO for each failing test.
+Else, run all engines which are both enabled and available, and print only summarized output."""
+)
 args = parser.parse_args()
+
+disabled_by_conf = config['run_all_disable']
+if args.enable_all:
+    enabled_engine_names = all_engine_names
+else:
+    enabled_engine_names = filter(lambda e: not e in disabled_by_conf, all_engine_names)
+enabled_and_available_engine_names = filter(lambda e: getattr(Engines, e).available(), enabled_engine_names)
+enabled_and_not_available_engine_names = filter(lambda x: not x in enabled_and_available_engine_names, enabled_engine_names)
 
 if args.list_engines:
     print "All:                   {}\n" \
