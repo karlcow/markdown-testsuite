@@ -116,7 +116,11 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output([cls.__name__], input)
 
-    class kramdown(CommandEngine): pass
+    class kramdown(CommandEngine):
+        @classmethod                                                                                                                            
+        def get_output(cls, input):                                                                                                             
+            return stdin_stdout_get_output([cls.__name__, '--no-auto-ids'], input)                                                              
+    	
     class multimarkdown(CommandEngine): pass
     class pandoc(CommandEngine): pass
     class redcarpet(CommandEngine): pass
