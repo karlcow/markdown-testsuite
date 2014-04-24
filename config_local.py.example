@@ -12,6 +12,7 @@ config = dict(
     #run_all_disable = [
         #'gfm',
         #'kramdown',
+        #'markdown_pl',
         #'marked',
 		#'md2html',
         #'multimarkdown',
