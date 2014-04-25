@@ -6,6 +6,8 @@ import imp
 import os
 
 # Default config values here.
+config_file_noext = 'config_local'
+config_file = config_file_noext + '.py'
 config = dict(
     gfm_oauth_token = '',
     # GFM off by default because it is too slow.
@@ -13,7 +15,7 @@ config = dict(
     timeout = 5
 )
 try:
-    config_custom = imp.load_source('config_local', 'config_local.py').config
+    config_custom = imp.load_source(config_file_noext, config_file).config
     config.update(config_custom)
 except IOError:
     # Config file not present.
@@ -54,7 +56,7 @@ def io_iterator():
                 output_path = path_noext + out_ext
                 with open(output_path, "r") as output_file:
                     output = output_file.read().decode(encoding)
-                yield (path_noext[(len(test_dir)+1):], input, output)
+                yield (os.path.splitext(basename)[0], input, output)
 
 def io_iterator_engine(id):
     """
@@ -74,15 +76,13 @@ def io_iterator_engine(id):
                 if not input:
                     with open(same_basename_on_parent(input_path), "r") as input_file:
                         input = input_file.read().decode(encoding)
-
                 # Get output
                 output_path = path_noext + out_ext
                 if not os.path.exists(output_path):
                     output_path = same_basename_on_parent(output_path)
                 with open(output_path, "r") as output_file:
                     output = output_file.read().decode(encoding)
-
-                yield (path_noext[(len(test_dir)+1):], input, output)
+                yield (os.path.splitext(basename)[0], input, output)
 
 def get_engine_ids():
     """
