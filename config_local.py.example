@@ -13,6 +13,7 @@ config = dict(
         #'gfm',
         #'kramdown',
         #'marked',
+		#'md2html',
         #'multimarkdown',
         #'pandoc',
         #'redcarpet',
