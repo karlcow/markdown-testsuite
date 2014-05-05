@@ -220,16 +220,15 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output([cls.__name__], input)
 
-    class marked(CommandEngine): pass
-    class kramdown(CommandEngine):
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output([cls.__name__, '--no-auto-ids'], input)
     class hoedown(CommandEngine):
         @classmethod
         def get_output(cls, input):
             return stdin_stdout_get_output([cls.__name__, '--all-block', '--all-span'], input)
-
+    class kramdown(CommandEngine):
+        @classmethod
+        def get_output(cls, input):
+            return stdin_stdout_get_output([cls.__name__, '--no-auto-ids'], input)
+    class marked(CommandEngine): pass
     class md2html(CommandEngine): pass
     class multimarkdown(CommandEngine): pass
     class pandoc(CommandEngine): pass
