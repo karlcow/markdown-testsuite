@@ -164,9 +164,6 @@ def stdin_stdout_get_output(command, stdin):
     stdout, stderr = process.communicate(stdin)
     return stdout.decode(md_testsuite.encoding)
 
-def command_available(command):
-    return distutils.spawn.find_executable(command)
-
 class Engines(object):
     """
     All nested classes of this class represent markdown engines and implement the static methods:
@@ -215,25 +212,19 @@ class Engines(object):
     	"""
         @classmethod
         def available(cls):
-            return command_available(cls.__name__)
+            return distutils.spawn.find_executable(cls.command[0])
         @classmethod
         def get_output(cls, input):
-            return stdin_stdout_get_output([cls.__name__], input)
+            return stdin_stdout_get_output(cls.command, input)
 
-    class marked(CommandEngine): pass
-    class kramdown(CommandEngine):
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output([cls.__name__, '--no-auto-ids'], input)
-    class hoedown(CommandEngine):
-        @classmethod
-        def get_output(cls, input):
-            return stdin_stdout_get_output([cls.__name__, '--all-block', '--all-span'], input)
-
-    class md2html(CommandEngine): pass
-    class multimarkdown(CommandEngine): pass
-    class pandoc(CommandEngine): pass
-    class redcarpet(CommandEngine): pass
+    class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
+    class kramdown(CommandEngine): command = ['kramdown']
+    class markdown_pl(CommandEngine): command = ['Markdown.pl']
+    class marked(CommandEngine): command = ['marked']
+    class md2html(CommandEngine): command = ['md2html']
+    class multimarkdown(CommandEngine): command = ['multimarkdown']
+    class pandoc(CommandEngine): command = ['pandoc']
+    class redcarpet(CommandEngine): command = ['redcarpet']
 
 class TestResult(object):
     """
