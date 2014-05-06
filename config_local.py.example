@@ -11,6 +11,7 @@ config = dict(
     # `[]` to run all engines.
     #run_all_disable = [
         #'gfm',
+        #'hoedown',
         #'kramdown',
         #'markdown_pl',
         #'marked',
