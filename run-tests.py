@@ -207,9 +207,9 @@ class Engines(object):
             return response.read().decode(md_testsuite.encoding)
 
     class CommandEngine(object):
-    	"""
-    	Base class for engines which use a command in PATH.
-    	"""
+        """
+        Base class for engines which use a command in PATH.
+        """
         @classmethod
         def available(cls):
             return distutils.spawn.find_executable(cls.command[0])
@@ -225,6 +225,7 @@ class Engines(object):
     class multimarkdown(CommandEngine): command = ['multimarkdown']
     class pandoc(CommandEngine): command = ['pandoc']
     class redcarpet(CommandEngine): command = ['redcarpet']
+
 
 class TestResult(object):
     """
