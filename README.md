@@ -30,17 +30,19 @@ Sample output from `run-tests.py`:
     multimarkdown |......FFF....FF...F............FFF.FFFFFFFFFFFFF.....FFFF.........F...................................|   0.58s  102   27  26%
     pandoc        |FF...........F.F.FFFF..FFFFF....FF.FFFFFFFFFFFFF.....FFFF.....FF............FFF.FFF..................F|   1.11s  102   41  40%
     redcarpet     |......................................................................................................|  21.49s  102    0   0%
+    showdown      |.......................................................................F..............................|   6.85s  102    1   0%
 
 	Extensions:
 
 	gfm           |F.|   2.37s    2    1  50%
     hoedown       |.|    0.00s    1    0   0%
     kramdown      |..|   0.62s    2    0   0%
-    markdown_pl   ||   0.00s    0    0   0%
+    markdown_pl   ||     0.00s    0    0   0%
     marked        |F.|   0.13s    2    1  50%
     md2html       |F.|   0.14s    2    0   0%
     multimarkdown |F.|   0.01s    2    1  50%
     pandoc        |F.|   0.02s    2    1  50%
     redcarpet     |..|   0.42s    2    0   0%
+    showdown      |F..|  0.20s    3    1  33%
 
 Where `F` indicates a failing test.
