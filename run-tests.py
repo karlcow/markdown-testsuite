@@ -219,6 +219,7 @@ class Engines(object):
 
     class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
     class kramdown(CommandEngine): command = ['kramdown']
+    class markdown2(CommandEngine): command = ['markdown2']
     class markdown_pl(CommandEngine): command = ['Markdown.pl']
     class marked(CommandEngine): command = ['marked']
     class md2html(CommandEngine): command = ['md2html']
