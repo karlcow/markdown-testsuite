@@ -4,6 +4,13 @@ Inspired by questions on [W3C Markdown Community Group](http://www.w3.org/commun
 
 Pull Requests are welcome. See the [CONTRIBUTING Guidelines](https://github.com/karlcow/markdown-testsuite/blob/master/CONTRIBUTING.md)
 
+## Design goals
+
+- Comprehensive.
+- Small modularized tests.
+- Easy to run tests using any programming language. In particular, data representations must have an implementation on all major languages.
+- Develop a consensus based markdown specification at [markdown-spec.html](markdown-spec.html). Visualize it [here](http://htmlpreview.github.io/?https://github.com/karlcow/markdown-testsuite/blob/master/markdown-spec.html).
+
 ## Test Scripts
 
 Markdown Test Suite already includes tests for many important markdown engines.
