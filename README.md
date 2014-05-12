@@ -29,6 +29,7 @@ Sample output from `run-tests.py`:
     md2html       |.........................FFF...F............................................FF........................|   7.42s  102    6   5%
     multimarkdown |......FFF....FF...F............FFF.FFFFFFFFFFFFF.....FFFF.........F...................................|   0.58s  102   27  26%
     pandoc        |FF...........F.F.FFFF..FFFFF....FF.FFFFFFFFFFFFF.....FFFF.....FF............FFF.FFF..................F|   1.11s  102   41  40%
+    peg_markdown  |.................................................................F....................................|   0.46s  102    1   0%
     redcarpet     |......................................................................................................|  21.49s  102    0   0%
 
 	Extensions:
@@ -41,6 +42,7 @@ Sample output from `run-tests.py`:
     md2html       |F.|   0.14s    2    0   0%
     multimarkdown |F.|   0.01s    2    1  50%
     pandoc        |F.|   0.02s    2    1  50%
+    peg_markdown  |...|  0.02s    3    0   0%
     redcarpet     |..|   0.42s    2    0   0%
 
 Where `F` indicates a failing test.
