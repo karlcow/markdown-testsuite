@@ -215,11 +215,12 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output(cls.command, input)
 
-    class hoedown(CommandEngine):       command = ['hoedown', '--all-block', '--all-span']
-    class kramdown(CommandEngine):      command = ['kramdown']
-    class markdown_pl(CommandEngine):   command = ['Markdown.pl']
-    class marked(CommandEngine):        command = ['marked']
-    class md2html(CommandEngine):       command = ['md2html']
+    class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
+    class kramdown(CommandEngine): command = ['kramdown']
+    class markdown2(CommandEngine): command = ['markdown2']
+    class markdown_pl(CommandEngine): command = ['Markdown.pl']
+    class marked(CommandEngine): command = ['marked']
+    class md2html(CommandEngine): command = ['md2html']
     class multimarkdown(CommandEngine): command = ['multimarkdown']
     class pandoc(CommandEngine):        command = ['pandoc']
     class redcarpet(CommandEngine):     command = ['redcarpet']
