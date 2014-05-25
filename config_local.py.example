@@ -10,15 +10,21 @@ config = dict(
     # Listed methods will be excluded from the `run-tests.py` all tests invocation.
     # `[]` to run all engines.
     #run_all_disable = [
+        #'blackfriday',
         #'gfm',
         #'hoedown',
         #'kramdown',
+        #'lunamark',
         #'markdown2',
         #'markdown_pl',
         #'marked',
+        #'markdown_pl',
+        #'marked',
+        #'maruku',
         #'md2html',
         #'multimarkdown',
         #'pandoc',
+        #'rdiscount',
         #'redcarpet',
         #'showdown',
     #],
