@@ -19,6 +19,7 @@ config = dict(
         #'multimarkdown',
         #'pandoc',
         #'redcarpet',
+        #'showdown',
     #],
 
     # Timeout in seconds.

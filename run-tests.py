@@ -152,6 +152,8 @@ def normalize_output(html):
 def stdin_stdout_get_output(command, stdin):
     """
     Convenience method for engines that take input on stdin and output to stdout.
+
+    If the command fails, or returns non 0, raises an exception.
     """
     process = subprocess.Popen(
         command,
@@ -162,7 +164,20 @@ def stdin_stdout_get_output(command, stdin):
         universal_newlines = True
     )
     stdout, stderr = process.communicate(stdin)
+    exit_status = process.wait()
+    if exit_status != 0:
+        raise 'ReturnedNon0'
     return stdout.decode(md_testsuite.encoding)
+
+class Engine(object):
+    @classmethod
+    def available(cls):
+        try:
+            stdin_stdout_get_output(cls.command, '')
+        except:
+            return False
+        else:
+            return True
 
 class Engines(object):
     """
@@ -174,28 +189,14 @@ class Engines(object):
     The names of those classes must correspond exactly to directory names under `extensions/`.
     """
 
-    class gfm(object):
+    class gfm(Engine):
         """
         You **must** be authenticated to use this because this test suite has more than 50 tests.
         <http://developer.github.com/v3/#rate-limiting>
         - authenticated: 60 requests per hour
         - unauthenticated requests: 5000 requests per hour
         """
-
         url = 'https://api.github.com/markdown?access_token=' + config['gfm_oauth_token']
-
-        @classmethod
-        def available(cls):
-            if not config['gfm_oauth_token']:
-                return False
-            data = '{"text":"a","mode":"gfm","context":"github/gollum"}'
-            req = urllib2.Request(cls.url, data)
-            try:
-                response = urllib2.urlopen(req, timeout = config['timeout'])
-            except urllib2.URLError, e:
-                return False
-            return True
-
         @classmethod
         def get_output(cls, input):
             data = '{{"text":{},"mode":"gfm","context":"github/gollum"}}'.format(json.dumps(input))
@@ -206,26 +207,23 @@ class Engines(object):
                 return 'CONNEXION ERROR: ' + str(e)
             return response.read().decode(md_testsuite.encoding)
 
-    class CommandEngine(object):
+    class CommandEngine(Engine):
         """
         Base class for engines which use a command in PATH.
         """
         @classmethod
-        def available(cls):
-            return distutils.spawn.find_executable(cls.command[0])
-        @classmethod
         def get_output(cls, input):
             return stdin_stdout_get_output(cls.command, input)
 
-    class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
-    class kramdown(CommandEngine): command = ['kramdown']
-    class markdown_pl(CommandEngine): command = ['Markdown.pl']
-    class marked(CommandEngine): command = ['marked']
-    class md2html(CommandEngine): command = ['md2html']
+    class hoedown(CommandEngine):       command = ['hoedown', '--all-block', '--all-span']
+    class kramdown(CommandEngine):      command = ['kramdown']
+    class markdown_pl(CommandEngine):   command = ['Markdown.pl']
+    class marked(CommandEngine):        command = ['marked']
+    class md2html(CommandEngine):       command = ['md2html']
     class multimarkdown(CommandEngine): command = ['multimarkdown']
-    class pandoc(CommandEngine): command = ['pandoc']
-    class redcarpet(CommandEngine): command = ['redcarpet']
-
+    class pandoc(CommandEngine):        command = ['pandoc']
+    class redcarpet(CommandEngine):     command = ['redcarpet']
+    class showdown(CommandEngine):      command = ['node', 'showdown-stdin.js']
 
 class TestResult(object):
     """
