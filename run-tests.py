@@ -15,7 +15,7 @@ import urllib2
 import md_testsuite
 from md_testsuite import config
 
-significant_attrs = ["alt", "href", "src"]
+significant_attrs = ["alt", "href", "src", "title"]
 normalize_whitespace_re = re.compile('\s+')
 class MyHTMLParser(HTMLParser):
     def __init__(self):
