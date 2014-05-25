@@ -215,15 +215,19 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output(cls.command, input)
 
+    class blackfriday(CommandEngine): command = ['blackfriday']
     class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
     class kramdown(CommandEngine): command = ['kramdown']
+    class lunamark(CommandEngine): command = ['lunamark']
     class markdown2(CommandEngine): command = ['markdown2']
     class markdown_pl(CommandEngine): command = ['Markdown.pl']
     class marked(CommandEngine): command = ['marked']
+    class maruku(CommandEngine): command = ['maruku']
     class md2html(CommandEngine): command = ['md2html']
     class multimarkdown(CommandEngine): command = ['multimarkdown']
     class pandoc(CommandEngine):        command = ['pandoc']
     class peg_markdown(CommandEngine): command = ['peg-markdown']
+    class rdiscount(CommandEngine): command = ['rdiscount']
     class redcarpet(CommandEngine):     command = ['redcarpet']
     class showdown(CommandEngine):      command = ['node', 'showdown-stdin.js']
 
