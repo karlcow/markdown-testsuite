@@ -223,6 +223,7 @@ class Engines(object):
     class md2html(CommandEngine): command = ['md2html']
     class multimarkdown(CommandEngine): command = ['multimarkdown']
     class pandoc(CommandEngine):        command = ['pandoc']
+    class peg_markdown(CommandEngine): command = ['peg-markdown']
     class redcarpet(CommandEngine):     command = ['redcarpet']
     class showdown(CommandEngine):      command = ['node', 'showdown-stdin.js']
 
