@@ -166,7 +166,7 @@ def stdin_stdout_get_output(command, stdin):
     stdout, stderr = process.communicate(stdin)
     exit_status = process.wait()
     if exit_status != 0:
-        raise 'ReturnedNon0'
+        raise Exception('Command exit status was not 0.')
     return stdout.decode(md_testsuite.encoding)
 
 class Engine(object):
@@ -215,7 +215,7 @@ class Engines(object):
         def get_output(cls, input):
             return stdin_stdout_get_output(cls.command, input)
 
-    class blackfriday(CommandEngine): command = ['blackfriday']
+    class blackfriday(CommandEngine): command = ['blackfriday-tool']
     class hoedown(CommandEngine): command = ['hoedown']
     class kramdown(CommandEngine): command = ['kramdown']
     class lunamark(CommandEngine): command = ['lunamark']

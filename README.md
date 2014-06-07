@@ -26,6 +26,8 @@ To configure the scripts do:
 
 and edit `config_local.py`. It is already gitignored.
 
+A `Vagrantfile` is provided with a provision script that installs all installable engines.
+
 Sample output from `run-tests.py`:
 
     blackfriday   |......FFF..............FF...F....................................F....................................|   0.93s  102    7   6%
