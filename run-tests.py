@@ -216,7 +216,7 @@ class Engines(object):
             return stdin_stdout_get_output(cls.command, input)
 
     class blackfriday(CommandEngine): command = ['blackfriday']
-    class hoedown(CommandEngine): command = ['hoedown', '--all-block', '--all-span']
+    class hoedown(CommandEngine): command = ['hoedown']
     class kramdown(CommandEngine): command = ['kramdown']
     class lunamark(CommandEngine): command = ['lunamark']
     class markdown2(CommandEngine): command = ['markdown2']
