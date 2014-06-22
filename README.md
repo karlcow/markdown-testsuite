@@ -72,11 +72,11 @@ Where `F` indicates a failing test.
 
 We haven't been the first test suite effort. Some projects have maintained their own test suite for a long time. Hopefully we can reach a state where people agree on the terms of what should be a good test suite for all developers.
 
-* [Original test suite](http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip)
-* [PHP markdown test suite:](https://github.com/michelf/mdtest/tree/master/Markdown.mdtest)
-* [Markdown-js test suite](https://github.com/evilstreak/markdown-js/tree/master/test/features)
-* [Python markdown 2 test suite](https://github.com/trentm/python-markdown2/tree/master/test/tm-cases)
-* [multimarkdown test suite](https://github.com/fletcher/MMD-Test-Suite)
+- [Original test suite](http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip)
+- [PHP markdown test suite:](https://github.com/michelf/mdtest/tree/master/Markdown.mdtest)
+- [Markdown-js test suite](https://github.com/evilstreak/markdown-js/tree/master/test/features)
+- [Python markdown 2 test suite](https://github.com/trentm/python-markdown2/tree/master/test/tm-cases)
+- [multimarkdown test suite](https://github.com/fletcher/MMD-Test-Suite)
 
 
 In addition we should note the [wonderful work](http://johnmacfarlane.net/babelmark2/) made by John Mac Farlane. The Web service output the differences in between the different markdown implementations. It helps a lot when searching on the most common output.
