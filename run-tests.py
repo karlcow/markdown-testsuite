@@ -224,7 +224,7 @@ class Engines(object):
     class marked(CommandEngine): command = ['marked']
     class maruku(CommandEngine): command = ['maruku']
     class md2html(CommandEngine): command = ['md2html']
-    class multimarkdown(CommandEngine): command = ['multimarkdown']
+    class multimarkdown(CommandEngine): command = ['multimarkdown', '-c']
     class pandoc(CommandEngine):        command = ['pandoc']
     class peg_markdown(CommandEngine): command = ['peg-markdown']
     class rdiscount(CommandEngine): command = ['rdiscount']
