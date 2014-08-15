@@ -77,6 +77,6 @@ We haven't been the first test suite effort. Some projects have maintained their
 - [Markdown-js test suite](https://github.com/evilstreak/markdown-js/tree/master/test/features)
 - [Python markdown 2 test suite](https://github.com/trentm/python-markdown2/tree/master/test/tm-cases)
 - [multimarkdown test suite](https://github.com/fletcher/MMD-Test-Suite)
-
+- [John MacFarlane's Standard Markdown spec](https://github.com/jgm/stmd)
 
 In addition we should note the [wonderful work](http://johnmacfarlane.net/babelmark2/) made by John Mac Farlane. The Web service output the differences in between the different markdown implementations. It helps a lot when searching on the most common output.
