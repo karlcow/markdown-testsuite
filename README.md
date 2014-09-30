@@ -1,3 +1,12 @@
+# Colophon - October 1st, 2014
+
+This project was initiated to provide a test suite for Markdown markup, and eventually create a specification from this test results. A part of of the community has started a new endeavor which seems to get traction as [CommonMark](https://github.com/jgm/stmd). **We are then closing this project** and encourage you to contribute to CommonMark. 
+
+The most interesting part of this project would not have been possible without the dedication of [Ciro Santilli](https://github.com/cirosantilli) @cirosantilli. So big applause and thank you to him.
+
+
+The rest is kept around for archives and references.
+
 # Markdown Test Suite
 
 Inspired by questions on [W3C Markdown Community Group](http://www.w3.org/community/markdown).
